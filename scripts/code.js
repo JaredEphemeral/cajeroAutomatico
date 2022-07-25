@@ -6,6 +6,7 @@ let btnIngreso = document.getElementById("inicio")
 
 document.addEventListener("DOMContentLoaded",function(){
     msjLogingIncorrecto.style.display = "none";
+    usuarioIngresado.focus();
 })
 
 btnIngreso.addEventListener('click', (e) =>{
@@ -15,13 +16,20 @@ btnIngreso.addEventListener('click', (e) =>{
       let usuarioAlmacenado = JSON.parse(localStorage.getItem(usuarioIngresado.value));      
       //validar credenciales
       if( usuarioIngresado.value == usuarioAlmacenado.usuario && constraseñaIngresada.value == usuarioAlmacenado.contraseña ){
-        console.log("B");
+        localStorage.setItem("user" , JSON.stringify(usuarioAlmacenado));
+        window.location.href = "./profile.html";
       }
       else{
+        usuarioIngresado.value = "";
+        constraseñaIngresada.value = "";
+        usuarioIngresado.focus();
         mensajeError();
       }
     }
     else{
+      usuarioIngresado.value = "";
+      constraseñaIngresada.value = "";
+      usuarioIngresado.focus();
       mensajeError();
     }
 })

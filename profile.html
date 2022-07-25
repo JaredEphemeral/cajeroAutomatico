@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profile</title>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <link rel="stylesheet" href="./style/style.css">
+    </head>
+    <body class="bodybg img-fluid object-fit">
+        <div class="container">
+            <!-- row de bienvenida -->
+            <div class="row-py3 text-center">
+                <h1 class=" text-dark " id="bienvenida"> Bienvenido USERNAME </h1>
+            </div>
+            <!-- row de card de la información del usuario -->
+            <div class="row flex-column align-items-center ">
+                <div class="card w-50" id="cardSaldo">
+                    <!-- row de saldos -->
+                    <div class="row">
+                        <p class="h5 text-muted text-center" id="mensajeDia">Saldo al día DAY:</p>
+                        <p class="h3 text-center" id="saldoUsuario">$XXX MXN</p>
+                    </div>
+                    <!-- row de acciones -->
+                    <div class="row text-center" id="rowAcciones">
+                        <p class="h5 text-muted mt-5 text-start">El día de hoy quiero: </p>    
+                        <div class="col-12">
+                            <button type="button" class="btn btn-success btn-sq-responsive w-50 my-1" id="btnDepositar">
+                                Depositar
+                            </button>
+                        </div>
+                        <div class="col-12">
+                            <button type="button" class="btn btn-danger btn-sq-responsive w-50 my-1" id="btnRetirar">
+                                Retirar
+                            </button>
+                        </div>
+                    </div>
+                    <!-- row que controla los movimientos -->
+                    <div class="row" id="rowMovimientos">
+                        <form>
+                            <div class="mb-3">
+                              <label for="inputCantidad" class="form-label">Cantidad:</label>
+                              <input type="number" class="form-control" id="inputCantidad" min="0" max="990">
+                              <div id="ayuda" class="form-text">Ingrese la cantidad a XXXXXX.</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="aceptarAccion">Aceptar</button>
+                            <button type="submit" class="btn btn-danger" id="cancelarAccion">Cancelar</button>
+                        </form>
+                    </div>
+                    <!-- row de cerrar sesión -->
+                    <div class="row mt-5">
+                        <div class="col text-end text-danger ">
+                            <a href="#" class="" onclick= "return btnCerrarSesion()"  >
+                                Cerrar sesion
+                            </a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footers -->
+        <div class="row">
+            <div class="row card-footer mt-5">
+                <p class="mx-3 text-dark "> <strong> Visita nuestras redes sociales: </strong> </p>
+                <div class="col-12">
+                    <button class="btn btn-primary mx-3" id="btnFacebook"><i class="bi bi-facebook"></i> Facebook</button>
+                </div>
+                <div class="col-12 pt-1">
+                    <button class="btn btn-primary mx-3" id="btnTwitter" ><i class="bi bi-twitter"></i> Twitter</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="card-footer text-white pt-5">
+                    <p class="mx-3 my-0"> <strong> Dudas o sugerencias enviar correo a bcojsteescucha@bancaJS.com</strong></p>
+                    <p class="mx-3 my-0"><strong> Si tiene problemas con su cuenta favor de comunicarse a los telefonos: </strong></p>
+                    <p class="mx-3 my-0"><strong>55-1-234578 o 55-1-8765432</strong> </p>
+                    <p class="mx-3 my-0"><strong> ©Todos los derechos reservados</strong></p>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="./scripts/profileCode.js"></script>
+</html>
