@@ -1,15 +1,15 @@
 let cuentas = [
-        {   nombre: "Jared", 
+        {   nombre: "Jared Mendoza", 
             usuario: "jared123",
             contraseña: "123",
             saldo: 200
     },
-        {   nombre: "Krystel", 
-            usuario: "kris123",
+        {   nombre: "Krystel Baca", 
+            usuario: "kris321",
             contraseña: "123",
             saldo: 599.99 
     },
-        {   nombre: "Andres", 
+        {   nombre: "Andres Sanchez", 
             usuario: "serdna",
             contraseña: "123",
             saldo: 750.01 
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded",function(){
     let id = 0;
     cuentas.forEach(element => {
         id ++;
-        guardarEnLocal(id, element);
+        guardarEnLocal(element.usuario, element);
     });
 
     

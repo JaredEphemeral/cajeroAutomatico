@@ -10,12 +10,14 @@
         <link rel="stylesheet" href="./style/style.css">
     </head>
     <body  class="bodybg img-fluid object-fit">
+        <!-- Container principal -->
         <div class="container">
+            <!-- Row para el Titulo -->
             <div class="row-py3 text-center">
                 <h1 class=" text-dark "> BANCA NACIONAL DE JS </h1>
             </div>
-
-            <div class="row py-3">
+            <!-- Row para el Formulario -->
+            <div class="row py-3 flex-column align-items-center">
                 <div class="card border-dark">
                     <p class="parrafo text-center"> <strong> Iniciar sesión</strong></p>
                     <form id="formLog">
@@ -31,30 +33,38 @@
                     </form>
                 </div>
             </div>
-
+            <!-- Row para el mensaje de error -->
             <div class="row py-5">
                 <div class="class text-center bg-danger text-white" id="msjErrorLoging" >
                     <p class="pt-2">Acceso Incorrecto</p>
                 </div>
             </div>
-            
         </div>
 
-        <div class="card-footer mt-5">
-            <p class="mx-3 text-dark "> <strong> Visita nuestras redes sociales: </strong> </p>
-            <button class="btn btn-primary mx-3" id="btnFacebook"><i class="bi bi-facebook"></i> Facebook</button>
-            <button class="btn btn-primary mx-3" id="btnTwitter" ><i class="bi bi-twitter"></i> Twitter</button>
-            
-        </div>
+        <!-- Footers -->
+        <div class="row">
+            <div class="row card-footer mt-5">
+                <p class="mx-3 text-dark "> <strong> Visita nuestras redes sociales: </strong> </p>
+                <div class="col-12">
+                    <button class="btn btn-primary mx-3" id="btnFacebook"><i class="bi bi-facebook"></i> Facebook</button>
+                </div>
+                <div class="col-12 pt-1">
+                    <button class="btn btn-primary mx-3" id="btnTwitter" ><i class="bi bi-twitter"></i> Twitter</button>
+                </div>
+            </div>
 
-        <div class="card-footer text-white pt-5">
-            <p class="mx-3 my-0"> <strong> Dudas o sugerencias enviar correo a bcojsteescucha@bancaJS.com</strong></p>
-            <p class="mx-3 my-0"><strong> Si tiene problemas para ingresar favor de comunicarse a los telefonos: </strong></p>
-            <p class="mx-3 my-0"><strong>55-1-234578 o 55-1-8765432</strong> </p>
-            <p class="mx-3 my-0"><strong> ©Todos los derechos reservados</strong></p>
+            <div class="row">
+                <div class="card-footer text-white pt-5">
+                    <p class="mx-3 my-0"> <strong> Dudas o sugerencias enviar correo a bcojsteescucha@bancaJS.com</strong></p>
+                    <p class="mx-3 my-0"><strong> Si tiene problemas para ingresar favor de comunicarse a los telefonos: </strong></p>
+                    <p class="mx-3 my-0"><strong>55-1-234578 o 55-1-8765432</strong> </p>
+                    <p class="mx-3 my-0"><strong> ©Todos los derechos reservados</strong></p>
+                </div>
+            </div>
         </div>
 
     </body>
+    <!-- Scrips -->
     <script src="./scripts/code.js"></script>
     <script src="./scripts/bd.js"></script>
 </html>

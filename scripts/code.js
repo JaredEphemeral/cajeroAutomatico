@@ -1,5 +1,4 @@
 let msjLogingIncorrecto = document.getElementById("msjErrorLoging");
-
 let usuarioIngresado = document.getElementById("inputUsuario");
 let constraseñaIngresada = document.getElementById("inputContraseña");
 
@@ -18,10 +17,10 @@ btnIngreso.addEventListener('click', (e) =>{
     //Validar si usuario existe
 
     //validar credenciales
-    //if( usuarioIngresado.value == usuarioAlmacenado.user && constraseñaIngresada.value == usuarioAlmacenado.pass ){
+    if( usuarioIngresado.value == usuarioAlmacenado.user && constraseñaIngresada.value == usuarioAlmacenado.pass ){
       //  window.location.href = "./profile.html";
-    //}
-    //else{
+    }
+    else{
        msjLogingIncorrecto.style.display = "initial";
        let intervalo = setInterval(evento,3000);
 
@@ -29,6 +28,5 @@ btnIngreso.addEventListener('click', (e) =>{
             msjLogingIncorrecto.style.display = "none";
             clearInterval(intervalo);
        }
-
-   // }
+    }
 })
