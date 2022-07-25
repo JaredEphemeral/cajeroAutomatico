@@ -6,6 +6,8 @@ let btnRetirar = document.getElementById("btnRetirar");
 let ayuda = document.getElementById("ayuda");
 let btnAccion = document.getElementById("aceptarAccion");
 let btnCancelarAccion = document.getElementById("cancelarAccion");
+let cuadroMensajes = document.getElementById("mensajes");
+let parrafoMensajes = document.getElementById("parrafoMensaje");
 
 const minCant = 10;
 const maxCant = 990;
@@ -21,6 +23,10 @@ document.addEventListener("DOMContentLoaded",function(){
     document.getElementById('bienvenida').innerHTML = "Bienvenid@ " + usuarioLogeado.nombre;
     movimientos.style.display = "none";
     acciones.style.display ="initial";
+    cuadroMensajes.style.display ="initial";
+    document.getElementById("inputCantidad").value = 0;
+
+    cuadroMensajes.style.backgroundColor = 'green';
 })
 
 btnDepositar.addEventListener('click', (e) =>{
@@ -28,6 +34,7 @@ btnDepositar.addEventListener('click', (e) =>{
     movimientos.style.display ="initial";
     ayuda.textContent = "Ingrese la cantidad a Depositar."
     banderaMovimiento = 1;
+    document.getElementById("inputCantidad").focus();
 })
 
 btnRetirar.addEventListener('click', (e) =>{
@@ -35,33 +42,49 @@ btnRetirar.addEventListener('click', (e) =>{
     movimientos.style.display ="initial";
     ayuda.textContent = "Ingrese la cantidad a Retirar."
     banderaMovimiento = 2;
+    document.getElementById("inputCantidad").focus();
 })
 
 btnAccion.addEventListener('click', (e) =>{
     e.preventDefault();
-    let cantMovimiento = document.getElementById("inputCantidad").value;
-    if(validarMovimiento(Number(cantMovimiento), Number(usuarioLogeado.saldo))){
-        switch(banderaMovimiento){
-            case 1:
-                usuarioLogeado.saldo = Number(usuarioLogeado.saldo) + Number(cantMovimiento);
-                localStorage.setItem("user", JSON.stringify(usuarioLogeado));
-                localStorage.setItem(usuarioLogeado.usuario, JSON.stringify(usuarioLogeado));
-                document.getElementById('saldoUsuario').innerHTML = "$ " + (usuarioLogeado.saldo).toFixed(2) + " MXN";
-                movimientos.style.display ="none";
-                acciones.style.display ="initial";
-                break;
-            case 2:
-                usuarioLogeado.saldo = Number(usuarioLogeado.saldo) - Number(cantMovimiento);
-                localStorage.setItem("user", JSON.stringify(usuarioLogeado));
-                localStorage.setItem(usuarioLogeado.usuario, JSON.stringify(usuarioLogeado));
-                document.getElementById('saldoUsuario').innerHTML = "$ " + (usuarioLogeado.saldo).toFixed(2) + " MXN";
-                movimientos.style.display ="none";
-                acciones.style.display ="initial";
-                break;
+    let cantMovimiento = Number(document.getElementById("inputCantidad").value);
+    if(cantMovimiento > 0){
+        if(validarMovimiento(cantMovimiento, Number(usuarioLogeado.saldo))){
+            switch(banderaMovimiento){
+                case 1:
+                    usuarioLogeado.saldo = Number(usuarioLogeado.saldo) + cantMovimiento;
+                    localStorage.setItem("user", JSON.stringify(usuarioLogeado));
+                    localStorage.setItem(usuarioLogeado.usuario, JSON.stringify(usuarioLogeado));
+                    document.getElementById('saldoUsuario').innerHTML = "$ " + (usuarioLogeado.saldo).toFixed(2) + " MXN";
+                    movimientos.style.display ="none";
+                    acciones.style.display ="initial";
+                    parrafoMensajes.innerHTML = "Se han depositado " + cantMovimiento + " MXN a su cuenta exitosamente."
+                    cuadroMensajes.style.backgroundColor = "green"
+                    mensaje();
+                    //Mensaje de deposito exitoso
+                    break;
+                case 2:
+                    usuarioLogeado.saldo = Number(usuarioLogeado.saldo) - cantMovimiento;
+                    localStorage.setItem("user", JSON.stringify(usuarioLogeado));
+                    localStorage.setItem(usuarioLogeado.usuario, JSON.stringify(usuarioLogeado));
+                    document.getElementById('saldoUsuario').innerHTML = "$ " + (usuarioLogeado.saldo).toFixed(2) + " MXN";
+                    movimientos.style.display ="none";
+                    acciones.style.display ="initial";
+                    parrafoMensajes.innerHTML = "Se han retirado " + cantMovimiento + " MXN de su cuenta exitosamente."
+                    cuadroMensajes.style.backgroundColor = "green"
+                    mensaje();
+                    //Mensaje de retiro exitoso
+                    break;
+            }
+            document.getElementById("inputCantidad").value = 0;
+        }
+        else{
+            
         }
     }
     else{
-        
+        document.getElementById("inputCantidad").value = 0;
+        //Mensaje de negativos
     }
 })
 
@@ -90,3 +113,12 @@ function validarMovimiento(cantidad, saldo){
     return true;
 }
 
+function mensaje(){
+    cuadroMensajes.style.display = "initial";
+    let intervalo = setInterval(evento,3000);
+  
+    function evento(){
+        cuadroMensajes.style.display = "none";
+          clearInterval(intervalo);
+    }
+  }
