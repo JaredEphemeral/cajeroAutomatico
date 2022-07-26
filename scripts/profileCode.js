@@ -23,10 +23,8 @@ document.addEventListener("DOMContentLoaded",function(){
     document.getElementById('bienvenida').innerHTML = "Bienvenid@ " + usuarioLogeado.nombre;
     movimientos.style.visibility = "hidden";
     acciones.style.visibility ="visible";
-    cuadroMensajes.style.visibility ="visible";
+    cuadroMensajes.style.visibility ="hidden";
     document.getElementById("inputCantidad").value = 0;
-
-    cuadroMensajes.style.backgroundColor = 'green';
 })
 
 btnDepositar.addEventListener('click', (e) =>{
@@ -79,12 +77,16 @@ btnAccion.addEventListener('click', (e) =>{
             document.getElementById("inputCantidad").value = 0;
         }
         else{
-            
+            mensaje();
         }
     }
     else{
-        document.getElementById("inputCantidad").value = 0;
-        //Mensaje de negativos
+        if( cantMovimiento <0){
+            document.getElementById("inputCantidad").value = 0;
+            parrafoMensajes.innerHTML = "No se permiten numeros negativos."
+            cuadroMensajes.style.backgroundColor = "red"
+            mensaje();
+        }
     }
 })
 
@@ -99,13 +101,15 @@ function validarMovimiento(cantidad, saldo){
     switch(banderaMovimiento){
         case 1:
             if( saldo + cantidad > 990){
-                console.log("No se puede pasar de 990");
+                parrafoMensajes.innerHTML = "No se puede tener mas de $990MXN."
+                cuadroMensajes.style.backgroundColor = "red"
                 return false;
             }
             break;
         case 2:
             if(saldo - cantidad < 10){
-                console.log("No se puede bajar de 10");
+                parrafoMensajes.innerHTML = "No se puede tener menos de $10MXN."
+                cuadroMensajes.style.backgroundColor = "red"
                 return false;
             }
             break;
@@ -115,7 +119,7 @@ function validarMovimiento(cantidad, saldo){
 
 function mensaje(){
     cuadroMensajes.style.visibility = "visible";
-    let intervalo = setInterval(evento,3000);
+    let intervalo = setInterval(evento,5000);
   
     function evento(){
         cuadroMensajes.style.visibility = "hidden";

@@ -5,7 +5,7 @@ let btnIngreso = document.getElementById("inicio")
 
 
 document.addEventListener("DOMContentLoaded",function(){
-    msjLogingIncorrecto.style.display = "none";
+    msjLogingIncorrecto.style.visibility = "hidden";
     usuarioIngresado.focus();
 })
 
@@ -35,11 +35,11 @@ btnIngreso.addEventListener('click', (e) =>{
 })
 
 function mensajeError(){
-  msjLogingIncorrecto.style.display = "initial";
+  msjLogingIncorrecto.style.visibility = "visible";
   let intervalo = setInterval(evento,3000);
 
   function evento(){
-        msjLogingIncorrecto.style.display = "none";
+        msjLogingIncorrecto.style.visibility = "hidden";
         clearInterval(intervalo);
   }
 }
