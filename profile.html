@@ -17,23 +17,33 @@
                 <h1 class=" text-dark " id="bienvenida"> Bienvenido USERNAME </h1>
             </div>
             <!-- row de card de la información del usuario -->
-            <div class="row flex-column align-items-center ">
-                <div class="card w-50" id="cardSaldo">
+            <div class="row">
+                <div class="card border-dark" id="cardSaldo">
                     <!-- row de saldos -->
-                    <div class="row">
-                        <p class="h5 text-muted text-center" id="mensajeDia">Saldo al día DAY:</p>
-                        <p class="h3 text-center" id="saldoUsuario">$XXX MXN</p>
+                    <div class="row text-center">
+                        <p class="h5 text-muted " id="mensajeDia">Saldo al día DAY:</p>
+                        <p class="h3" id="saldoUsuario">$XXX MXN</p>
                     </div>
-                    <!-- row de acciones -->
-                    <div class="row text-center" id="rowAcciones">
-                        <p class="h5 text-muted mt-5 text-start">El día de hoy quiero: </p>    
-                        <div class="col-12">
-                            <button type="button" class="btn btn-success btn-sq-responsive w-50 my-1" id="btnDepositar">
+
+
+
+                    <div class="row flex-column align-items-center" id="rowAcciones">
+
+                        <!-- row de botones de acciones -->
+                        <div class="row text-start" >
+                            <p class="h5 text-muted mt-5">El día de hoy quiero: </p> 
+                        </div>
+
+                        <!-- boton verde -->
+                        <div class="row d-grid align-items-end w-75">
+                            <button type="button" class="btn btn-success my-1" id="btnDepositar">
                                 Depositar
                             </button>
                         </div>
-                        <div class="col-12">
-                            <button type="button" class="btn btn-danger btn-sq-responsive w-50 my-1" id="btnRetirar">
+
+                        <!-- boton rojo -->
+                        <div class="row d-grid align-items-end w-75">
+                            <button type="button" class="btn btn-danger my-1" id="btnRetirar">
                                 Retirar
                             </button>
                         </div>
@@ -42,18 +52,18 @@
                     <div class="row" id="rowMovimientos">
                         <form>
                             <div class="mb-3">
-                              <label for="inputCantidad" class="form-label">Cantidad:</label>
-                              <input type="number" class="form-control" id="inputCantidad" min="0" max="990">
-                              <div id="ayuda" class="form-text">Ingrese la cantidad a XXXXXX.</div>
+                                <label for="inputCantidad" class="form-label">Cantidad:</label>
+                                <input type="number" class="form-control" id="inputCantidad" min="0" max="990">
+                                <div id="ayuda" class="form-text">Ingrese la cantidad a XXXXXX.</div>
                             </div>
                             <button type="submit" class="btn btn-primary" id="aceptarAccion">Aceptar</button>
                             <button type="submit" class="btn btn-danger" id="cancelarAccion">Cancelar</button>
                         </form>
                     </div>
                     <!-- row de cerrar sesión -->
-                    <div class="row mt-5">
-                        <div class="col text-end text-danger ">
-                            <a href="#" class="" onclick= "return btnCerrarSesion()"  >
+                    <div class="row mt-5 mb-2 mx-2">
+                        <div class="col-12 text-end">
+                            <a href="#" class="text-danger" onclick= "return btnCerrarSesion()"  >
                                 Cerrar sesion
                             </a> 
                         </div>
@@ -63,7 +73,7 @@
 
             <!-- Row para el mensaje de error -->
             <div class="row py-5 flex-column align-items-center">
-                <div class="class text-center bg-danger text-white w-50 " id="mensajes" >
+                <div class="class text-center bg-danger text-white " id="mensajes" >
                     <p id="parrafoMensaje" class="pt-2">MENSAJE</p>
                 </div>
             </div>

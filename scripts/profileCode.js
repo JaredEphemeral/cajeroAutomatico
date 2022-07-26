@@ -21,25 +21,25 @@ document.addEventListener("DOMContentLoaded",function(){
     document.getElementById('mensajeDia').innerHTML = "Saldo al día " + d + "/" + m + "/" + y + ":";
     document.getElementById('saldoUsuario').innerHTML = "$ " + (usuarioLogeado.saldo).toFixed(2) + " MXN";
     document.getElementById('bienvenida').innerHTML = "Bienvenid@ " + usuarioLogeado.nombre;
-    movimientos.style.display = "none";
-    acciones.style.display ="initial";
-    cuadroMensajes.style.display ="initial";
+    movimientos.style.visibility = "hidden";
+    acciones.style.visibility ="visible";
+    cuadroMensajes.style.visibility ="visible";
     document.getElementById("inputCantidad").value = 0;
 
     cuadroMensajes.style.backgroundColor = 'green';
 })
 
 btnDepositar.addEventListener('click', (e) =>{
-    acciones.style.display = "none";
-    movimientos.style.display ="initial";
+    acciones.style.visibility = "hidden";
+    movimientos.style.visibility ="visible";
     ayuda.textContent = "Ingrese la cantidad a Depositar."
     banderaMovimiento = 1;
     document.getElementById("inputCantidad").focus();
 })
 
 btnRetirar.addEventListener('click', (e) =>{
-    acciones.style.display = "none";
-    movimientos.style.display ="initial";
+    acciones.style.visibility = "hidden";
+    movimientos.style.visibility ="visible";
     ayuda.textContent = "Ingrese la cantidad a Retirar."
     banderaMovimiento = 2;
     document.getElementById("inputCantidad").focus();
@@ -56,8 +56,8 @@ btnAccion.addEventListener('click', (e) =>{
                     localStorage.setItem("user", JSON.stringify(usuarioLogeado));
                     localStorage.setItem(usuarioLogeado.usuario, JSON.stringify(usuarioLogeado));
                     document.getElementById('saldoUsuario').innerHTML = "$ " + (usuarioLogeado.saldo).toFixed(2) + " MXN";
-                    movimientos.style.display ="none";
-                    acciones.style.display ="initial";
+                    movimientos.style.visibility ="hidden";
+                    acciones.style.visibility ="visible";
                     parrafoMensajes.innerHTML = "Se han depositado " + cantMovimiento + " MXN a su cuenta exitosamente."
                     cuadroMensajes.style.backgroundColor = "green"
                     mensaje();
@@ -68,8 +68,8 @@ btnAccion.addEventListener('click', (e) =>{
                     localStorage.setItem("user", JSON.stringify(usuarioLogeado));
                     localStorage.setItem(usuarioLogeado.usuario, JSON.stringify(usuarioLogeado));
                     document.getElementById('saldoUsuario').innerHTML = "$ " + (usuarioLogeado.saldo).toFixed(2) + " MXN";
-                    movimientos.style.display ="none";
-                    acciones.style.display ="initial";
+                    movimientos.style.visibility ="hidden";
+                    acciones.style.visibility ="visible";
                     parrafoMensajes.innerHTML = "Se han retirado " + cantMovimiento + " MXN de su cuenta exitosamente."
                     cuadroMensajes.style.backgroundColor = "green"
                     mensaje();
@@ -114,11 +114,11 @@ function validarMovimiento(cantidad, saldo){
 }
 
 function mensaje(){
-    cuadroMensajes.style.display = "initial";
+    cuadroMensajes.style.visibility = "visible";
     let intervalo = setInterval(evento,3000);
   
     function evento(){
-        cuadroMensajes.style.display = "none";
+        cuadroMensajes.style.visibility = "hidden";
           clearInterval(intervalo);
     }
   }
