@@ -21,9 +21,7 @@ document.addEventListener("DOMContentLoaded",function(){
     cuentas.forEach(element => {
         id ++;
         guardarEnLocal(element.usuario, element);
-    });
-
-    
+    });   
 })
 
 function guardarEnLocal(id, elemento){

@@ -100,14 +100,14 @@ function btnCerrarSesion(){
 function validarMovimiento(cantidad, saldo){
     switch(banderaMovimiento){
         case 1:
-            if( saldo + cantidad > 990){
+            if( saldo + cantidad > maxCant){
                 parrafoMensajes.innerHTML = "No se puede tener mas de $990MXN."
                 cuadroMensajes.style.backgroundColor = "red"
                 return false;
             }
             break;
         case 2:
-            if(saldo - cantidad < 10){
+            if(saldo - cantidad < minCant){
                 parrafoMensajes.innerHTML = "No se puede tener menos de $10MXN."
                 cuadroMensajes.style.backgroundColor = "red"
                 return false;
