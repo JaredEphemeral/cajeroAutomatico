@@ -1,3 +1,4 @@
+//Variables globales
 let msjLogingIncorrecto = document.getElementById("msjErrorLoging");
 let usuarioIngresado = document.getElementById("inputUsuario");
 let constraseñaIngresada = document.getElementById("inputContraseña");
@@ -12,11 +13,12 @@ document.addEventListener("DOMContentLoaded",function(){
 btnIngreso.addEventListener('click', (e) =>{
     e.preventDefault();
     //Validar si usuario existe
-    if(!(localStorage.getItem(usuarioIngresado.value) === null)){ 
-      let usuarioAlmacenado = JSON.parse(localStorage.getItem(usuarioIngresado.value));      
-      //validar credenciales
-      if( usuarioIngresado.value == usuarioAlmacenado.usuario && constraseñaIngresada.value == usuarioAlmacenado.contraseña ){
-        localStorage.setItem("user" , JSON.stringify(usuarioAlmacenado));
+    var objUsuario = cuentas.find(obj => {return obj.usuario === usuarioIngresado.value});
+    if(objUsuario){ 
+      if( usuarioIngresado.value == objUsuario.usuario && constraseñaIngresada.value == objUsuario.contraseña ){
+        objUsuario = (({usuario, nombre, saldo}) => ({usuario, nombre, saldo}))(objUsuario); 
+        objUsuario.saldo = JSON.parse(localStorage.getItem(usuarioIngresado.value));
+        localStorage.setItem("user" , JSON.stringify(objUsuario));
         window.location.href = "./profile.html";
       }
       else{

@@ -9,9 +9,11 @@ let btnCancelarAccion = document.getElementById("cancelarAccion");
 let cuadroMensajes = document.getElementById("mensajes");
 let parrafoMensajes = document.getElementById("parrafoMensaje");
 
+let banderaMovimiento = 0; //Si es 1 es Deposito, si es 2 es retiro
+
 const minCant = 10;
 const maxCant = 990;
-let banderaMovimiento = 0; //Si es 1 es Deposito, si es 2 es retiro
+const cantidadDecimales = 2;
 
 document.addEventListener("DOMContentLoaded",function(){
     n =  new Date();
@@ -52,8 +54,8 @@ btnAccion.addEventListener('click', (e) =>{
                 case 1:
                     usuarioLogeado.saldo = Number(usuarioLogeado.saldo) + cantMovimiento;
                     localStorage.setItem("user", JSON.stringify(usuarioLogeado));
-                    localStorage.setItem(usuarioLogeado.usuario, JSON.stringify(usuarioLogeado));
-                    document.getElementById('saldoUsuario').innerHTML = "$ " + (usuarioLogeado.saldo).toFixed(2) + " MXN";
+                    localStorage.setItem(usuarioLogeado.usuario, JSON.stringify(usuarioLogeado.saldo));
+                    document.getElementById('saldoUsuario').innerHTML = "$ " + (usuarioLogeado.saldo).toFixed(cantidadDecimales) + " MXN";
                     movimientos.style.visibility ="hidden";
                     acciones.style.visibility ="visible";
                     parrafoMensajes.innerHTML = "Se han depositado " + cantMovimiento + " MXN a su cuenta exitosamente."
@@ -64,8 +66,8 @@ btnAccion.addEventListener('click', (e) =>{
                 case 2:
                     usuarioLogeado.saldo = Number(usuarioLogeado.saldo) - cantMovimiento;
                     localStorage.setItem("user", JSON.stringify(usuarioLogeado));
-                    localStorage.setItem(usuarioLogeado.usuario, JSON.stringify(usuarioLogeado));
-                    document.getElementById('saldoUsuario').innerHTML = "$ " + (usuarioLogeado.saldo).toFixed(2) + " MXN";
+                    localStorage.setItem(usuarioLogeado.usuario, JSON.stringify(usuarioLogeado.saldo));
+                    document.getElementById('saldoUsuario').innerHTML = "$ " + (usuarioLogeado.saldo).toFixed(cantidadDecimales) + " MXN";
                     movimientos.style.visibility ="hidden";
                     acciones.style.visibility ="visible";
                     parrafoMensajes.innerHTML = "Se han retirado " + cantMovimiento + " MXN de su cuenta exitosamente."
@@ -101,14 +103,14 @@ function validarMovimiento(cantidad, saldo){
     switch(banderaMovimiento){
         case 1:
             if( saldo + cantidad > maxCant){
-                parrafoMensajes.innerHTML = "No se puede tener mas de $990MXN."
+                parrafoMensajes.innerHTML = "No se puede tener mas de $" + maxCant + "MXN."
                 cuadroMensajes.style.backgroundColor = "red"
                 return false;
             }
             break;
         case 2:
             if(saldo - cantidad < minCant){
-                parrafoMensajes.innerHTML = "No se puede tener menos de $10MXN."
+                parrafoMensajes.innerHTML = "No se puede tener menos de $" + minCant + "MXN."
                 cuadroMensajes.style.backgroundColor = "red"
                 return false;
             }

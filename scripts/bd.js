@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded",function(){
     let id = 0;
     cuentas.forEach(element => {
         id ++;
-        guardarEnLocal(element.usuario, element);
+        guardarEnLocal(element.usuario, element.saldo);
     });   
 })
 
